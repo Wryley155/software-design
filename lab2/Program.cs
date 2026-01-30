@@ -15,3 +15,4 @@ namespace lab2
 		}
 	}
 }
+//test
