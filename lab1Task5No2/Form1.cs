@@ -1,34 +1,14 @@
-using System;
-using System.Windows.Forms;
 using ClassLibrary1;
 
-namespace lab1
+namespace lab1Task5No2
 {
     public partial class Form1 : Form
     {
         int[] array = { 5, 2, 9, 1, 5, 6 };
-
         public Form1()
         {
             InitializeComponent();
             LoadListBox(array);
-        }
-
-        public void BubbleSort(int[] array)
-        {
-            int n = array.Length;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (array[j] > array[j + 1])
-                    {
-                        int temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
-                    }
-                }
-            }
         }
         private void LoadListBox(int[] numbers)
         {
@@ -40,21 +20,19 @@ namespace lab1
             }
         }
 
-        
-
         private void button1_Click(object sender, EventArgs e)
         {
-            BubbleSort(array);
+            DescendingSort sorter = new DescendingSort(array);
+            sorter.Sort();
+
             listBox1.Items.Clear();
             listBox1.Items.Add("Sorted sequence:");
-            foreach (int num in array)
+
+            foreach (int num in sorter.GetSortedArray())
             {
                 listBox1.Items.Add(num);
             }
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
     }
 }
+
